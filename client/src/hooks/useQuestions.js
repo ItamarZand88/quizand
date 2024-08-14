@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
-const API_URL = "http://localhost:3001"; // או כתובת השרת שלך
+// Update this URL to your Firebase function endpoint
+const API_URL = process.env.REACT_APP_API_URL;
 
 const useQuestions = () => {
   const [questions, setQuestionsState] = useState([]);
@@ -9,21 +10,27 @@ const useQuestions = () => {
 
   useEffect(() => {
     const fetchQuestions = async () => {
+      console.log("Starting fetchQuestions function...");
+
       try {
-        console.log("Fetching questions from:", `${API_URL}/api/questions`);
-        const response = await fetch(`${API_URL}/api/questions`);
+        const url = `${API_URL}/questions`;
+        console.log("Fetching questions from URL:", url);
+
+        const response = await fetch(url);
+        console.log("Received response status:", response.status);
+        
         if (!response.ok) {
-          throw new Error(
-            `Network response was not ok, status: ${response.status}`
-          );
+          console.error("Response was not ok. Status:", response.status);
+          throw new Error(`Network response was not ok, status: ${response.status}`);
         }
+
         const data = await response.json();
         console.log("Questions fetched successfully:", data);
 
         setQuestionsState(data || []);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching questions:", error);
+        console.error("Error fetching questions:", error.message);
         setError(error.message);
         setLoading(false);
       }
@@ -33,19 +40,25 @@ const useQuestions = () => {
   }, []);
 
   const updateQuestion = async (updatedQuestion) => {
+    console.log("Starting updateQuestion function...");
+    
     try {
-      const response = await fetch(
-        `${API_URL}/api/questions/${updatedQuestion.id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatedQuestion),
-        }
-      );
+      const url = `${API_URL}/questions/${updatedQuestion.id}`;
+      console.log("Updating question at URL:", url);
+      console.log("Payload:", updatedQuestion);
 
+      const response = await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedQuestion),
+      });
+
+      console.log("Received response status for update:", response.status);
+      
       if (!response.ok) {
+        console.error("Failed to update question. Status:", response.status);
         throw new Error("Failed to update question");
       }
 
@@ -54,8 +67,9 @@ const useQuestions = () => {
           q.id === updatedQuestion.id ? updatedQuestion : q
         )
       );
+      console.log("Question updated successfully:", updatedQuestion);
     } catch (error) {
-      console.error("Error updating question:", error);
+      console.error("Error updating question:", error.message);
       setError(error.message);
     }
   };
