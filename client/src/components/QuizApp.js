@@ -1,5 +1,5 @@
 // QuizApp.js
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
   Card,
   CardContent,
@@ -28,30 +28,7 @@ const QuizApp = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
 
-  useEffect(() => {
-    if (questions.length > 0 && quizStarted && !currentQuestion) {
-      selectQuestion();
-    }
-  }, [questions, quizStarted]);
-
-  const handleCorrectAnswer = () => {
-    confetti({
-      particleCount: 50,
-      spread: 60,
-      origin: { y: 0.7 },
-      gravity: 1.5,
-      ticks: 150,
-      decay: 0.9,
-      scalar: 0.8,
-    });
-  };
-
-  const startQuiz = () => {
-    setQuizStarted(true);
-    selectQuestion();
-  };
-
-  const selectQuestion = () => {
+  const selectQuestion = useCallback(() => {
     const weightedQuestions = questions.flatMap((q) =>
       Array(5 - Math.floor(q.averageScore || 0)).fill(q)
     );
@@ -68,6 +45,29 @@ const QuizApp = () => {
     setCurrentNote(randomQuestion.userNote || "");
     setSelectedAnswer(null);
     setIsEditing(false);
+  }, [questions]);
+
+  useEffect(() => {
+    if (questions.length > 0 && quizStarted && !currentQuestion) {
+      selectQuestion();
+    }
+  }, [questions, quizStarted, currentQuestion, selectQuestion]);
+
+  const handleCorrectAnswer = () => {
+    confetti({
+      particleCount: 50,
+      spread: 60,
+      origin: { y: 0.7 },
+      gravity: 1.5,
+      ticks: 150,
+      decay: 0.9,
+      scalar: 0.8,
+    });
+  };
+
+  const startQuiz = () => {
+    setQuizStarted(true);
+    selectQuestion();
   };
 
   const handleAnswerSelect = (index) => {
