@@ -1,0 +1,509 @@
+{
+  "questions": [
+    {
+      "id": 1,
+      "category": "למידת מכונה",
+      "question": "השאלה מתייחסת ל-learning rate ולאלגוריתם הלמידה שלה, gradient descent בשיטת linear regression",
+      "options": [
+        "אם ה-learning rate נמוך מידי או גבוה מידי, אזי gradient descent עלול לא להתכנס",
+        "אם ה-learning rate נמוך מידי, אזי gradient descent עלול להתכנס לאט מידי, ואילו אם ה-learning rate גבוה מידי, אזי gradient descent עלול לא להתכנס",
+        "אם ה-learning rate נמוך מידי או גבוה מידי, אזי gradient descent עלול להתכנס לאט מידי",
+        "ה-learning rate האופטימלי הוא 0.5",
+        "אם ה-learning rate נמוך מידי או גבוה מידי, אזי gradient descent עלול להתכנס מהר מידי"
+      ],
+      "correctAnswer": 1,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0.5
+      ],
+      "averageScore": 0.25
+    },
+    {
+      "id": 2,
+      "category": "למידת מכונה",
+      "question": "להלן אמירות לגבי תהליך selection באלגוריתם אבולוציוני. אחת מהן אינה נכונה. סמנו אותה.",
+      "options": [
+        "selection אינו תלוי בייצוג פרט באוכלוסייה",
+        "selection עובד אם ערכי הפיטנס שליליים",
+        "selection הינו הסתברותי",
+        "selection מייצר פרטים חדשים בעלי פיטנס טוב יותר",
+        "לצורך ביצוע selection ניתן למיין את האוכלוסייה עפ ערכי הפיטנס, אך אין חובה בכך",
+        "selection עובד אם ערכי הפיטנס מנורמלים או לא"
+      ],
+      "correctAnswer": 3,
+      "userNote": "",
+      "scoreHistory": [],
+      "averageScore": 0
+    },
+    {
+      "id": 3,
+      "category": "למידת מכונה",
+      "question": "נתון dataset עם 2 classes, המסומנים ב-X אדום ו-O כחול, עבורו יש למצוא מודל המבצע קלסיפיקציה בינארית. אנשים הציעו חלוקות שונות ל-training set (פריטים המוקפים בקו ירוק) ו-test set (היתר, שאינם מוקפים בקו ירוק). מי הציע את החלוקה הטובה ביותר?",
+      "options": [
+        "דאינריז וגם סרסיי",
+        "סרסיי",
+        "טיריון וגם ג'יימי",
+        "דאינריז",
+        "ג'יימי",
+        "טיריון"
+      ],
+      "correctAnswer": 5,
+      "image": "./32022.png",
+      "userNote": "",
+      "scoreHistory": [
+        1,
+        0.75,
+        1,
+        0.75
+      ],
+      "averageScore": 0.875
+    },
+    {
+      "id": 4,
+      "category": "למידת מכונה",
+      "question": "אתם מריצים אלגוריתם למידת מכונה ורואים שה-error ב-training set נמוך, ואילו ה-error ב-test set גבוה. אילו מהמשפטים הבאים נכון:",
+      "options": [
+        "יש לכם bias גבוה ו-variance גבוה",
+        "יש לכם bias גבוה ו-variance נמוך",
+        "האלגוריתם עובד מצוין",
+        "יש לכם bias נמוך ו-variance נמוך",
+        "יש לכם bias נמוך ו-variance גבוה",
+        "אין bias ואין variance"
+      ],
+      "correctAnswer": 4,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0
+      ],
+      "averageScore": 0
+    },
+    {
+      "id": 5,
+      "category": "למידת מכונה",
+      "question": "מהי פונקצית אקטיבציה (activation function)?",
+      "options": [
+        "פונקציית הפעלה אשר משתמשים בה ב-Linear Regression",
+        "פונקציה לינארית אשר משתמשים בה ב-naive bayes",
+        "פונקציה לא לינארית אשר משתמשים בה ב-Linear Regression",
+        "פונקציה לינארית אשר משתמשים בה ב-deep learning",
+        "פונקציה לא לינארית אשר משתמשים בה ב-XGBoost",
+        "כל 5 התשובות האחרות שגויות"
+      ],
+      "correctAnswer": 5,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0,
+        1,
+        0.25
+      ],
+      "averageScore": 0.3125
+    },
+    {
+      "id": 6,
+      "category": "למידת מכונה",
+      "question": "התמונה להלן ממחישה תופעה, תהליך, או אלגוריתם שראינו בכיתה. מהו?",
+      "options": [
+        "data leakage",
+        "data normalization",
+        "bias-variance tradeoff",
+        "data scaling",
+        "training vs. validation error",
+        "cross-validation"
+      ],
+      "correctAnswer": 5,
+      "image": "./62022.png",
+      "userNote": "",
+      "scoreHistory": [
+        1,
+        0.75
+      ],
+      "averageScore": 0.875
+    },
+    {
+      "id": 7,
+      "category": "למידת מכונה",
+      "question": "עבור בעיית ניבוי מחיר בית כפונקציה של גודל הבית, אנו מבצעים 3 ריצות של רגרסיה פולינומיאלית. אחת עם מעלת פולינום d=1, שנייה עם מעלה d=2, שלישית עם מעלה d=6. מהו התיאור המדויק ביותר של התוצאות, המוצגות בגרף שלהלן?",
+      "options": [
+        "עבור d=1 ו-d=2 יש לנו מקרה של over-fitting ועבור d=6 יש לנו מקרה של under-fitting",
+        "עבור d=1 ו-d=2 יש לנו מקרה של under-fitting ועבור d=6 יש לנו מקרה של over-fitting",
+        "עבור d=1 יש לנו מקרה של under-fitting ועבור d=6 יש לנו מקרה של over-fitting",
+        "עבור d=1 יש לנו מקרה של over-fitting ועבור d=6 יש לנו מקרה של under-fitting",
+        "בכל שלושת המקרים יש לנו over-fitting",
+        "בכל שלושת המקרים יש לנו under-fitting"
+      ],
+      "correctAnswer": 2,
+      "image": "./72022.png",
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0
+      ],
+      "averageScore": 0
+    },
+    {
+      "id": 8,
+      "category": "למידת מכונה",
+      "question": "ברוב ה-classifiers וה-regressors ב-scikit-learn ישנה פונקציית fit. מה תפקידה?",
+      "options": [
+        "לחשב את פונקציית הפיטנס של המודל",
+        "להפריד דאטא ל-train ו-test, לאמן את המודל על train, ולהחזיר מודל מאומן",
+        "לבדוק את ההתאמה של המודל לנתוני הבדיקה (test)",
+        "להפריד דאטא ל-train ו-test, לאמן את המודל על train, ולבדוק על test",
+        "לאמן את המודל על סמך נתוני אימון",
+        "לבדוק האם פונקציית הפיטנס סובלת מבעיה של התכנסות מוקדמת"
+      ],
+      "correctAnswer": 4,
+      "userNote": "",
+      "scoreHistory": [],
+      "averageScore": 0
+    },
+    {
+      "id": 9,
+      "category": "למידת מכונה",
+      "question": "אילו נקודות שייכות לחזית ה-Pareto, כפי שהגדרנו בכיתה?",
+      "options": [
+        "A,C",
+        "A",
+        "A,D",
+        "A,B",
+        "B,C",
+        "A,B,C"
+      ],
+      "correctAnswer": 3,
+      "image": "./92022.png",
+      "userNote": "",
+      "scoreHistory": [
+        1,
+        0.75
+      ],
+      "averageScore": 0.875
+    },
+    {
+      "id": 10,
+      "category": "למידת מכונה",
+      "question": "להלן רשימת קביעות לגבי fitness-proportionate selection. אחת מהן אינה נכונה. איזו?",
+      "options": [
+        "עלול לא לעבוד טוב כאשר יש פתרונות בעלי פיטנס דומה לאחר דורות רבים",
+        "חשוף ל-function transposition",
+        "יכול לשנות פתרון טוב לרעה",
+        "פתרון בעל פיטנס גבוה עלול לא להבחר",
+        "דורש חישוב הסתברויות יחסיות של כל פרט",
+        "פתרון בעל פיטנס גבוה עלול להשתלט על האוכלוסיה"
+      ],
+      "correctAnswer": 2,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0
+      ],
+      "averageScore": 0
+    },
+    {
+      "id": 11,
+      "category": "למידת מכונה",
+      "question": "האם logistic regression יכול למצוא פתרון עם decision boundary כמו זה המסומן בירוק, עבור בעיית קליפיקציה בינארית בה נקודות משתייכות לאחד מ-2 classes (עיגול כחול או איקס אדום)?",
+      "options": [
+        "לא, מאחר ו-logistic regression מייצר פתרונות עבורם ה-decision boundary הינו קו ישר ולא עיגול",
+        "כן, אם נשתמש ב-polynomial features עם פולינום ממעלה 1",
+        "כן, אם נשתמש ב-polynomial features עם פולינום ממעלה 2",
+        "לא, מאחר ו-logistic regression אינו מתכנס כאשר ה-decision boundary הינו עיגול",
+        "כן, אם נגדיל את המספר המינימאלי של samples הנחוצים ל-split בכל צמת במודל",
+        "כן, אם נשתמש ב-polynomial features עם פולינום ממעלה אי זוגית"
+      ],
+      "correctAnswer": 2,
+      "image": "./112022.png",
+      "userNote": "",
+      "scoreHistory": [],
+      "averageScore": 0
+    },
+    {
+      "id": 12,
+      "category": "למידת מכונה",
+      "question": "מנה 3 הבדלים בין random forest לבין AdaBoost",
+      "options": [
+        "עץ מלא מול עץ לא מלא, אקראיות שמקורה יוניפורמי מול גאוסיאני, חשיבות לסדר העצים מול אי חשיבות לסדר",
+        "עץ מלא מול גדם, משקל שווה מול משקל לא שווה של העצים, חשיבות לסדר העצים מול אי חשיבות לסדר",
+        "גרף חסר מעגלים מול עץ מלא, משקל שווה מול משקל לא שווה של העצים, חשיבות לסדר העצים מול אי חשיבות לסדר",
+        "עץ מלא מול גרף, משקל שווה מול משקל לא שווה של הגרפים, מיון מול אי מיון העצים",
+        "עץ מלא מול גדם, משקל שווה מול משקל לא שווה של העצים, בעיות קלספיקציה בלבד מול בעיות קלספיקציה+רגרסיה",
+        "עץ AVL מול עץ בינארי, משקל שווה מול משקל לא שווה של העצים, חשיבות לסדר העצים מול אי חשיבות לסדר"
+      ],
+      "correctAnswer": 1,
+      "userNote": "פיתההההה",
+      "scoreHistory": [
+        0,
+        0.75,
+        1,
+        0,
+        0,
+        0
+      ],
+      "averageScore": 0.2916666666666667
+    },
+    {
+      "id": 13,
+      "category": "למידת מכונה",
+      "question": "מה ההבדל בין gradient descent (GD) ל-stochastic gradient descent (SGD)?",
+      "options": [
+        "GD הינו הסתברותי ואילו SGD הינו דטרמיניסטי",
+        "GD משתמש בחלק מהדאטא ו-SGD משתמש בכל הדאטא",
+        "SGD הינו הסתברותי ואילו GD הינו דטרמיניסטי",
+        "ל-SGD התכנסות מובטחת ואילו ל-GD לא",
+        "SGD משתמש בחלק מהדאטא ו-GD משתמש בכל הדאטא",
+        "ל-GD התכנסות מובטחת ואילו ל-SGD לא"
+      ],
+      "correctAnswer": 4,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0,
+        0,
+        0.5
+      ],
+      "averageScore": 0.125
+    },
+    {
+      "id": 14,
+      "category": "למידת מכונה",
+      "question": "אנו נרצה להשתמש ב-ridge regression או lasso regression לעומת הוורסיה הבסיסית, קרי linear regression, כי:",
+      "options": [
+        "ל-ridge ו-lasso יש יתרונות מהירות משמעותיים",
+        "ל-ridge ו-lasso יש מנגנוני רגולריזציה להתמודדות עם משקלים קרובים לאפס",
+        "ל-ridge ו-lasso יש מנגנוני רגולריזציה להתמודדות עם משקלים גבוהים",
+        "ל-ridge ו-lasso אין דרישה ל-scaling",
+        "ל-ridge ו-lasso יש אקטיבציות לינאריות שפועלות כמנגנוני תיקון שגיאות",
+        "ל-ridge ו-lasso יש מנגנוני רגולריזציה להתמודדות עם משקלים נמוכים"
+      ],
+      "correctAnswer": 2,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "averageScore": 0
+    },
+    {
+      "id": 15,
+      "category": "למידת מכונה",
+      "question": "ברגרסיה לינארית מתי ה-sum of squared residuals שווה ל-0?",
+      "options": [
+        "כאשר כל נקודות ה-training על קו ישר אחד",
+        "כאשר כל נקודות ה-training מנורמלות לערכים בתחום: [-1,1]",
+        "כאשר אין outliers ב-דאטא",
+        "כאשר כל נקודות ה-training מנורמלות לערכים בתחום: [0,1]",
+        "כאשר כל הדאטא מתפלג נורמלית",
+        "כאשר כל הדאטא מתפלג יוניפורמית"
+      ],
+      "correctAnswer": 0,
+      "userNote": "",
+      "scoreHistory": [],
+      "averageScore": 0
+    },
+    {
+      "id": 16,
+      "category": "למידת מכונה",
+      "question": "מהם 2 מקורות לאקראיות ב-random forest?",
+      "options": [
+        "random builds, random trees",
+        "random classes, random feature subset",
+        "bootstrapped trees, bootstrapped features",
+        "dataset bootstrapping, random subset of features",
+        "random trees, random feature subset",
+        "random graphs, random features"
+      ],
+      "correctAnswer": 3,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0.25
+      ],
+      "averageScore": 0.125
+    },
+    {
+      "id": 17,
+      "category": "למידת מכונה",
+      "question": "לאחר הרצה של k-fold cross-validation באיזה מודל נשתמש לניבוי?",
+      "options": [
+        "k המודלים הכי טובים",
+        "ניתן להשתמש בכל אחד מ-k המודלים",
+        "ממוצע של כל k המודלים",
+        "כל התשובות האחרות שגויות",
+        "המודל עבורו קבלנו את ה-score הכי טוב",
+        "k-1 המודלים הכי טובים"
+      ],
+      "correctAnswer": 3,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0,
+        1,
+        0.5
+      ],
+      "averageScore": 0.375
+    },
+    {
+      "id": 18,
+      "category": "למידת מכונה",
+      "question": "מהי הנחה בסיסית של אלגוריתם Naive Bayes?",
+      "options": [
+        "אי תלות של data",
+        "אי תלות של features",
+        "אי תלות של weights",
+        "אי תלות של התפלגויות",
+        "אי תלות של פרמטרי איתחול",
+        "אי תלות של classes"
+      ],
+      "correctAnswer": 1,
+      "userNote": "",
+      "scoreHistory": [
+        1,
+        0.5
+      ],
+      "averageScore": 0.75
+    },
+    {
+      "id": 19,
+      "category": "למידת מכונה",
+      "question": "מה עושה הקוד הבא?",
+      "options": [
+        "חישוב מספר ה-out_features בהתאם למשתנה in_features",
+        "סיווג למספר classes השווה ל-n_units",
+        "קונוולוציה",
+        "קונוולוציה + max pooling",
+        "מימוש יעיל של אלגוריתם backpropagation ב-deep learning כאשר מספר האיטרציות שווה ל-n_trials",
+        "מציאת ארכיטקטורת deep network"
+      ],
+      "correctAnswer": 5,
+      "image": "./192022.png",
+      "userNote": "",
+      "scoreHistory": [],
+      "averageScore": 0
+    },
+    {
+      "id": 20,
+      "category": "למידת מכונה",
+      "question": "למה נועד הקוד הבא?",
+      "options": [
+        "בחירת ה-k הכי טוב",
+        "מציאת שיטת האתחול הנכונה עבור k-means",
+        "זהו קוד שגוי מאחר ויש קריאות ל-fit אבל אין קריאות ל-predict",
+        "חישוב ה-clusters והצגתם",
+        "הרצת k-means ולאחריו חישוב השכנים כחלק מ-k nearest neighbors",
+        "שילוב אופטימלי של knn ו-k-means"
+      ],
+      "correctAnswer": 0,
+      "image": "./202022.png",
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0
+      ],
+      "averageScore": 0
+    },
+    {
+      "id": 21,
+      "category": "למידת מכונה",
+      "question": "התמונה הבאה, שראינו באחד השיעורים, ממחישה מה מול מה?",
+      "options": [
+        "Logistic Regression vs. Deep Network",
+        "PCA vs Linear Regression",
+        "XGBoost vs. AdaBoost",
+        "Random Forest vs. Decision Tree",
+        "PCA vs Deep Network",
+        "Linear Regression vs. Logistic Regression"
+      ],
+      "correctAnswer": 1,
+      "image": "./212022.png",
+      "userNote": "",
+      "scoreHistory": [
+        1,
+        1
+      ],
+      "averageScore": 1
+    },
+    {
+      "id": 22,
+      "category": "למידת מכונה",
+      "question": "סמן את האימרה השגויה",
+      "options": [
+        "ה-permutation test מעבד תתי קבוצות בדאטא",
+        "ה-t-test מניח אי תלות בין שני ה-samples",
+        "ה-t-test מניח random sampling של ה-samples",
+        "ה-permutation test מניח התפלגות נורמלית של שני ה-samples",
+        "ה-permutation test \"מערבב\" את שני ה-samples",
+        "ה-t-test מניח התפלגות נורמלית של שני ה-samples"
+      ],
+      "correctAnswer": 3,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "averageScore": 0.25
+    },
+    {
+      "id": 23,
+      "category": "למידת מכונה",
+      "question": "השלם: פונקציית ה-ArgMax בעיתית בהפעלת כלל השרשרת ב-deep learning כי",
+      "options": [
+        "הפונקצייה יקרה מאד לחישוב כאשר עובדים על GPU",
+        "ה-SoftMax שבא לפני ה-ArgMax \"הורס\" את ערכה",
+        "הנגזרת היא 0",
+        "לא ניתן לעבוד עם ArgMax בשיתוף עם SoftMax",
+        "ה-SoftMax שבא לאחר ה-ArgMax \"הורס\" את ערכה",
+        "הנגזרת שלילית"
+      ],
+      "correctAnswer": 2,
+      "userNote": "",
+      "scoreHistory": [],
+      "averageScore": 0
+    },
+    {
+      "id": 24,
+      "category": "למידת מכונה",
+      "question": "זהו קוד ממאמר שלי שראינו בכיתה. על איזה מודל הוא מבוסס?",
+      "options": [
+        "gradient descent",
+        "stochastic gradient descent",
+        "ridge regression",
+        "gradient boosting",
+        "adaptive boosting",
+        "random forest"
+      ],
+      "correctAnswer": 3,
+      "image": "./242022.png",
+      "userNote": "",
+      "scoreHistory": [],
+      "averageScore": 0
+    },
+    {
+      "id": 25,
+      "category": "למידת מכונה",
+      "question": "לאחר שהרצנו אלגוריתם למידה כלשהו על ה-training set וקבלנו מודל שהוא fitted בצענו בדיקה על ה-test set וחישבנו מדד ROC-AUC של 1.02. המשמעות היא:",
+      "options": [
+        "זוהי שגיאה",
+        "לא ניתן לדעת מאחר ולא נאמר אם הערך הוא scaled או לא",
+        "לא ניתן להשיב מאחר ולא יודע אחוז ה-split בין ה-train ל-test",
+        "לא ניתן לדעת מאחר ולא נאמר אם הערך מנורמל או לא",
+        "זהו מודל חלש מאחר והוא רחוק מהשגיאה המינימאלית שהיא 0",
+        "זהו מודל מצוין לאור המדד הגבוה על ה-test set"
+      ],
+      "correctAnswer": 0,
+      "userNote": "",
+      "scoreHistory": [
+        0,
+        0,
+        1,
+        0.75
+      ],
+      "averageScore": 0.4375
+    }
+  ]
+}
