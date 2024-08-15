@@ -1,4 +1,3 @@
-// QuizApp.js
 import React, { useState, useEffect, useCallback } from "react";
 import {
   Card,
@@ -9,15 +8,12 @@ import {
 } from "./ui/card";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import { Progress } from "./ui/progress";
 import QuestionCard from "./QuestionCard";
 import KnowledgeLevelSelector from "./KnowledgeLevelSelector";
 import useQuestions from "../hooks/useQuestions";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-
-// Import Heroicons
-import { PencilIcon, CheckIcon } from "@heroicons/react/24/solid";
+import LoaderAnimation from "./LoaderAnimation";
 
 const QuizApp = () => {
   const { questions, updateQuestion, loading, error } = useQuestions();
@@ -27,6 +23,17 @@ const QuizApp = () => {
   const [currentNote, setCurrentNote] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [quizStarted, setQuizStarted] = useState(false);
+
+  const calculateProgress = useCallback(() => {
+    const answeredQuestions = questions.filter(
+      (q) => q.scoreHistory.length > 0
+    );
+    return {
+      totalAnswered: answeredQuestions.length,
+      totalQuestions: questions.length,
+      progressPercentage: (answeredQuestions.length / questions.length) * 100,
+    };
+  }, [questions]);
 
   const selectQuestion = useCallback(() => {
     const weightedQuestions = questions.flatMap((q) =>
@@ -104,14 +111,18 @@ const QuizApp = () => {
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      saveNote();
+  const handleNoteClick = () => {
+    if (!isEditing) {
+      setIsEditing(true);
     }
   };
 
-  if (loading) return <div className="text-center py-10">טוען שאלות...</div>;
+  const handleBlur = () => {
+    setIsEditing(false);
+    saveNote();
+  };
+
+  if (loading) return <LoaderAnimation />;
   if (error)
     return (
       <div className="text-center py-10 text-red-500">
@@ -119,15 +130,17 @@ const QuizApp = () => {
       </div>
     );
 
+  const progress = calculateProgress();
+
   return (
-    <div className="container mx-auto p-4 min-h-screen  bg-pattern" dir="rtl">
+    <div className="container mx-auto p-4 min-h-screen " dir="rtl">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
       >
-        <Card className="w-full max-w-2xl mx-auto shadow-2xl overflow-hidden bg-white">
-          <CardHeader className="bg-gradient-to-r from-slate-800 to-slate-700 text-white">
+        <Card className="w-full max-w-2xl mx-auto shadow-lg overflow-hidden bg-white rounded-lg">
+          <CardHeader className="bg-slate-800 text-white p-6">
             <CardTitle className="text-3xl font-bold text-center">
               QuizMe
             </CardTitle>
@@ -143,7 +156,7 @@ const QuizApp = () => {
               >
                 {currentQuestion ? (
                   <div className="space-y-4">
-                    <h3 className="text-xl font-semibold mb-2 text-slate-800">
+                    <h3 className="text-xl font-semibold mb-4 text-slate-800 bg-slate-100 p-4 rounded-lg">
                       {currentQuestion.question}
                     </h3>
                     {currentQuestion.image && (
@@ -151,11 +164,11 @@ const QuizApp = () => {
                         <img
                           src={currentQuestion.image}
                           alt="תמונת שאלה"
-                          className="w-full"
+                          className="w-full h-auto max-h-80 object-contain"
                         />
                       </div>
                     )}
-                    <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div className="space-y-4">
                       {currentQuestion.options.map((option, index) => (
                         <motion.div
                           key={index}
@@ -181,52 +194,40 @@ const QuizApp = () => {
                       ))}
                     </div>
 
-                    <Card className="mt-2 bg-sky-100">
-                      <CardContent className="p-2 flex justify-between items-center">
+                    <Card className="mt-6 bg-slate-100 hover:bg-slate-200 transition-colors duration-200">
+                      <CardContent className="p-4" onClick={handleNoteClick}>
                         {isEditing ? (
                           <Textarea
                             value={currentNote}
                             onChange={handleNoteChange}
-                            onKeyPress={handleKeyPress}
-                            className="w-full"
+                            onBlur={handleBlur}
+                            className="w-full bg-white"
                             placeholder="הוסף הערות כאן..."
+                            autoFocus
                           />
                         ) : (
-                          <p className="text-sm text-right">
-                            {currentQuestion.userNote || "אין הערות"}
+                          <p className="text-sm text-right cursor-pointer min-h-[2.5rem]">
+                            {currentQuestion.userNote ||
+                              "לחץ כאן להוספת הערות..."}
                           </p>
                         )}
-                        <Button
-                          onClick={
-                            isEditing ? saveNote : () => setIsEditing(true)
-                          }
-                          className="p-1"
-                          style={{
-                            background: "none",
-                            border: "none",
-                            padding: 0,
-                          }}
-                        >
-                          {isEditing ? (
-                            <CheckIcon className="w-5 h-5 text-green-500" />
-                          ) : (
-                            <PencilIcon className="w-5 h-5 text-gray-500" />
-                          )}
-                        </Button>
                       </CardContent>
                     </Card>
                   </div>
                 ) : (
-                  <p className="text-center py-10 text-slate-800">
-                    {quizStarted
-                      ? "לחץ על 'שאלה הבאה' כדי להמשיך"
-                      : "לחץ על 'התחל' כדי להתחיל את החידון!"}
-                  </p>
+                  <div className="text-center py-10">
+                    <h2 className="text-2xl font-bold text-slate-800 mb-4">
+                      ברוכים הבאים לחידון!
+                    </h2>
+                    <p className="text-slate-600 mb-6">
+                      בחנו את הידע שלכם ולמדו דברים חדשים.
+                    </p>
+                  </div>
                 )}
               </motion.div>
             </AnimatePresence>
           </CardContent>
-          <CardFooter className="flex flex-col items-center bg-gradient-to-b from-slate-50 to-slate-100 rounded-b-lg p-4">
+          <CardFooter className="flex flex-col items-center bg-slate-100 rounded-b-lg p-4">
             {showResult && (
               <KnowledgeLevelSelector
                 onSelect={(level) => {
@@ -250,18 +251,21 @@ const QuizApp = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="mt-4 text-center text-sm text-slate-500"
+        className="mt-4 p-3 bg-slate-100 rounded-lg shadow max-w-xs mx-auto"
       >
-        <Progress
-          value={
-            (questions.filter((q) => q.averageScore > 0).length /
-              questions.length) *
-            100
-          }
-          className="w-full mb-2"
-        />
-        השלמת {questions.filter((q) => q.averageScore > 0).length} מתוך{" "}
-        {questions.length} שאלות
+        <div className="text-center mb-2">
+          <span className="text-sm font-medium text-slate-800">
+            {progress.totalAnswered} מתוך {progress.totalQuestions}
+          </span>
+        </div>
+        <div className="relative">
+          <div className="overflow-hidden h-2 text-xs flex rounded bg-slate-300">
+            <div
+              style={{ width: `${progress.progressPercentage}%` }}
+              className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"
+            ></div>
+          </div>
+        </div>
       </motion.div>
     </div>
   );
