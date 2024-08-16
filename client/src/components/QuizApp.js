@@ -133,7 +133,7 @@ const QuizApp = () => {
   const progress = calculateProgress();
 
   return (
-    <div className="container mx-auto p-4 min-h-screen " dir="rtl">
+    <div className="container mx-auto p-4 min-h-screen" dir="rtl">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -194,25 +194,18 @@ const QuizApp = () => {
                       ))}
                     </div>
 
-                    <Card className="mt-6 bg-slate-100 hover:bg-slate-200 transition-colors duration-200">
-                      <CardContent className="p-4" onClick={handleNoteClick}>
-                        {isEditing ? (
-                          <Textarea
-                            value={currentNote}
-                            onChange={handleNoteChange}
-                            onBlur={handleBlur}
-                            className="w-full bg-white"
-                            placeholder="הוסף הערות כאן..."
-                            autoFocus
-                          />
-                        ) : (
-                          <p className="text-sm text-right cursor-pointer min-h-[2.5rem]">
-                            {currentQuestion.userNote ||
-                              "לחץ כאן להוספת הערות..."}
-                          </p>
-                        )}
-                      </CardContent>
-                    </Card>
+                    {/* תיבת ההערות המעוצבת */}
+                    <div className="inputContainer">
+                      <input
+                        type="text"
+                        className="input"
+                        value={currentNote}
+                        onChange={handleNoteChange}
+                        onBlur={handleBlur}
+                        placeholder="הוסף הערות כאן..."
+                        onClick={handleNoteClick}
+                      />
+                    </div>
                   </div>
                 ) : (
                   <div className="text-center py-10">
@@ -267,6 +260,45 @@ const QuizApp = () => {
           </div>
         </div>
       </motion.div>
+
+      <style jsx>{`
+        .inputContainer {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 20px;
+        }
+
+        .input {
+          width: 100%;
+          min-height: 45px;
+          color: #333;
+          outline: none;
+          transition: 0.35s;
+          padding: 0px 7px;
+          background-color: #f0f0f0;
+          border-radius: 6px;
+          border: 2px solid #e0e0e0;
+        }
+
+        .input::placeholder {
+          color: #999;
+        }
+
+        .input:focus::placeholder {
+          transition: 0.2s;
+          opacity: 0;
+        }
+
+        .input:focus {
+          transform: scale(1.01);
+          background-color: #e8e8e8;
+          box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.2),
+            inset -2px -2px 5px rgba(255, 255, 255, 0.7);
+          border-color: #d0d0d0;
+        }
+      `}</style>
     </div>
   );
 };
