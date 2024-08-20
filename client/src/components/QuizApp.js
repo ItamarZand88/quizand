@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import LoaderAnimation from "./LoaderAnimation";
 import "./QuizApp.css";
+import Logo from "./Logo";
 
 const QuizApp = () => {
   const { questions, updateQuestion, loading, error } = useQuestions();
@@ -141,9 +142,9 @@ const QuizApp = () => {
         transition={{ duration: 0.3 }}
       >
         <Card className="w-full max-w-2xl mx-auto shadow-lg overflow-hidden bg-white rounded-lg">
-          <CardHeader className="bg-slate-800 text-white p-6">
-            <CardTitle className="text-3xl font-bold text-center">
-              QuizMe
+          <CardHeader className="bg-slate-800 text-white p-1">
+            <CardTitle className="text-3xl font-bold flex justify-center items-center">
+              <Logo />
             </CardTitle>
           </CardHeader>
           <CardContent className="p-6">
@@ -195,7 +196,6 @@ const QuizApp = () => {
                       ))}
                     </div>
 
-                    {/* תיבת ההערות המעוצבת */}
                     <div className="inputContainer">
                       <input
                         type="text"
@@ -211,10 +211,10 @@ const QuizApp = () => {
                 ) : (
                   <div className="text-center py-10">
                     <h2 className="text-2xl font-bold text-slate-800 mb-4">
-                      ברוכים הבאים לחידון!
+                      אם כבר ללמוד... אז ללמוד בכיף{" "}
                     </h2>
                     <p className="text-slate-600 mb-6">
-                      בחנו את הידע שלכם ולמדו דברים חדשים.
+                      המבחן הקרוב - למידת מכונה
                     </p>
                   </div>
                 )}
