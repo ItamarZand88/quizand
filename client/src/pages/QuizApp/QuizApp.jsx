@@ -13,9 +13,7 @@ const QuizApp = () => {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [showResult, setShowResult] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-
   const [quizStarted, setQuizStarted] = useState(false);
-
   const navigate = useNavigate();
 
   const calculateProgress = useCallback(() => {
@@ -43,7 +41,6 @@ const QuizApp = () => {
       weightedQuestions[Math.floor(Math.random() * weightedQuestions.length)];
     setCurrentQuestion(randomQuestion);
     setShowResult(false);
-
     setSelectedAnswer(null);
   }, [questions]);
 
@@ -90,23 +87,12 @@ const QuizApp = () => {
   const progress = calculateProgress();
 
   return (
-    <div
-      className="quiz-container"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-start",
-        alignItems: "center",
-        minHeight: "100vh",
-        padding: "20px",
-        overflowY: "auto",
-      }}
-    >
+    <div className="quiz-container">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        style={{ width: "100%", maxWidth: "800px" }}
+        className="quiz-content"
       >
         <a
           href="/"
@@ -114,17 +100,7 @@ const QuizApp = () => {
             e.preventDefault();
             navigate("/");
           }}
-          style={{
-            position: "absolute",
-            top: "20px",
-            right: "40px",
-            textDecoration: "none",
-            color: "#4682b4",
-            fontSize: "1.2rem",
-            textShadow: "1px 1px 2px rgba(0, 0, 0, 0.1)",
-            fontFamily: '"Shantell Sans", cursive',
-            zIndex: 1001,
-          }}
+          className="home-link"
         >
           HOME &#8594;
         </a>
@@ -142,14 +118,12 @@ const QuizApp = () => {
                 transition={{ duration: 0.3 }}
               >
                 {currentQuestion ? (
-                  <>
-                    <QuizContent
-                      currentQuestion={currentQuestion}
-                      showResult={showResult}
-                      selectedAnswer={selectedAnswer}
-                      handleAnswerSelect={handleAnswerSelect}
-                    />
-                  </>
+                  <QuizContent
+                    currentQuestion={currentQuestion}
+                    showResult={showResult}
+                    selectedAnswer={selectedAnswer}
+                    handleAnswerSelect={handleAnswerSelect}
+                  />
                 ) : (
                   <div className="no-questions-message">
                     {quizStarted
@@ -185,16 +159,9 @@ const QuizApp = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5, duration: 0.5 }}
         className="progress-container"
-        style={{ marginTop: "20px" }}
       >
         <div className="progress-text">
           {progress.totalAnswered} out of {progress.totalQuestions}
-        </div>
-        <div className="progress-bar">
-          <div
-            className="progress-fill"
-            style={{ width: `${progress.progressPercentage}%` }}
-          ></div>
         </div>
       </motion.div>
     </div>

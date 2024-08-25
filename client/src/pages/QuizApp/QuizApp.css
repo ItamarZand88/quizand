@@ -181,3 +181,6 @@ body {
 .learn-more:hover {
   background-color: #2563eb;
 }
+.progress-text {
+  direction: ltr;
+}
