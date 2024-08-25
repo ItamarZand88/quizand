@@ -1,6 +1,7 @@
+// QuestionCard.js
 import React from "react";
-import { Card, CardContent } from "./ui/card";
-import { cn } from "../lib/utils";
+import { Card, CardContent } from "../ui/card";
+import { cn } from "../../lib/utils";
 import { motion } from "framer-motion";
 import { CheckCircleIcon, XCircleIcon } from "@heroicons/react/24/solid";
 
@@ -12,7 +13,7 @@ const QuestionCard = ({
   onClick,
 }) => {
   const cardClass = cn(
-    "cursor-pointer transition-all duration-300 transform hover:scale-105",
+    "cursor-pointer transition-all duration-300 h-full",
     "border-2 shadow-lg",
     {
       "border-blue-500 bg-blue-50": isSelected && !showResult,
@@ -28,9 +29,13 @@ const QuestionCard = ({
   };
 
   return (
-    <motion.div whileHover={{ scale: 1.001 }} whileTap={{ scale: 0.95 }}>
+    <motion.div
+      className="h-full"
+      whileHover={{ scale: 1.001 }}
+      whileTap={{ scale: 0.95 }}
+    >
       <Card className={cardClass} onClick={onClick}>
-        <CardContent className="p-4 text-center relative">
+        <CardContent className="p-4 text-center relative h-full flex items-center justify-center">
           <div className="text-lg font-medium">{option}</div>
           {showResult && (
             <motion.div

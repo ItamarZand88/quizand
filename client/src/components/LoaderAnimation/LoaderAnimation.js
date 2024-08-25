@@ -14,7 +14,7 @@ const LoaderAnimation = () => {
         {`
           .loader {
             --path: #2f3545;
-            --dot: #5628ee;
+            --dot: #1e90ff;
             --duration: 3s;
             width: 44px;
             height: 44px;
